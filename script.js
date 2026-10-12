@@ -150,12 +150,19 @@ function render() {
       </div>
       <h3>${escapeHTML(post.text)}</h3>
       <p>${escapeHTML(post.note)}</p>
-      <div class="foot">
-        <span class="avatar">${escapeHTML(post.initial)}</span>
-        <span>${escapeHTML(post.author)}</span>
-        <span>·</span>
-        <span>${escapeHTML(post.time)}</span>
-      </div>
+    
+<div class="foot">
+  ${
+    post.avatar
+      ? `<img class="post-avatar" src="${escapeHTML(post.avatar)}" alt=""
+           loading="lazy">`
+      : `<span class="avatar">${escapeHTML(post.initial)}</span>`
+  }
+  <span class="post-author">${escapeHTML(post.author)}</span>
+  <span>·</span>
+  <span>${escapeHTML(post.time)}</span>
+</div>
+
     </article>
   `).join("");
 
