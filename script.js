@@ -89,16 +89,39 @@ async function loadPosts() {
     return;
   }
 
-  cloudPosts = (data || []).map((post) => ({
+ const posts = data || [];
+
+const userIds = [...new Set(posts.map(post => post.user_id))];
+
+let profilesById = {};
+
+if (userIds.length > 0) {
+  const { data: profiles, error: profileError } = await db
+    .from("profiles")
+    .select("id, username, avatar_url")
+    .in("id", userIds);
+
+  if (!profileError) {
+    profilesById = Object.fromEntries(
+      (profiles || []).map(profile => [profile.id, profile])
+    );
+  }
+}
+
+cloudPosts = posts.map((post) => {
+  const profile = profilesById[post.user_id];
+
+  return {
     id: post.id,
     text: post.body,
     category: post.category || "random",
     note: "Shared with the community ✦",
-    author: "community member",
-    initial: "✦",
+    author: profile?.username || "community member",
+    initial: profile?.username?.[0]?.toUpperCase() || "✦",
+    avatar: profile?.avatar_url || null,
     time: formatTime(post.created_at)
-  }));
-
+  };
+});
   render();
 }
 
