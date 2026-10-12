@@ -5,6 +5,60 @@
 <section class="stats" id="community"><div><b>01</b> Be curious</div><div><b>02</b> Be kind</div><div><b>03</b> Be yourself</div><p>Made for the minds that never switch off <span>✦</span></p></section>
 <section class="content" id="explore"><div class="heading"><div><div class="eyebrow">THE THOUGHT ORBIT</div><h2>What's on your mind?</h2></div><label class="search">⌕ <input id="search" placeholder="Find a thought…" aria-label="Search thoughts"></label></div><div class="filters"><button class="active" data-filter="all">All thoughts</button><button data-filter="life">Life</button><button data-filter="school">School</button><button data-filter="random">Random</button></div><div class="grid" id="grid"></div><p class="empty" id="empty" hidden>No thoughts found in this orbit. Try another search ✦</p></section>
 <section class="ask" id="ask"><div class="askcopy"><div class="eyebrow">SEND IT INTO THE UNIVERSE</div><h2>What's keeping<br>your mind busy?</h2><p>Big question, tiny thought, midnight mystery — there's space for it here.</p></div><form id="form"><label for="thought">Your thought</label><textarea id="thought" maxlength="240" required placeholder="I've been wondering about…"></textarea><div class="formrow"><small id="count">0 / 240</small><select id="category" aria-label="Category"><option value="life">Life</option><option value="school">School</option><option value="random">Random</option></select></div><button class="primary" type="submit">Release your thought ✦</button><small class="note">Demo mode: thoughts are saved only in this browser.</small></form></section>
+
+<section class="profile-section" id="profile">
+  <div class="profile-heading">
+    <div class="eyebrow">YOUR LITTLE CORNER OF THE UNIVERSE</div>
+    <h2>Your profile<span class="accent">.</span></h2>
+    <p>Give your corner of the universe a personality.</p>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-preview">
+      <img id="avatarPreview"
+           src="https://placehold.co/120x120/17152d/c8b7ff?text=%E2%9C%A6"
+           alt="Profile avatar">
+      <div>
+        <h3 id="profileDisplayName">Your username</h3>
+        <p id="profileDisplayBio">Your story starts here.</p>
+      </div>
+    </div>
+
+    <form id="profileForm">
+      <label for="avatarFile">Profile picture</label>
+      <input id="avatarFile" type="file"
+             accept="image/png,image/jpeg,image/webp,image/gif">
+      <small class="profile-help">Image only, maximum 2 MB.</small>
+
+      <label for="profileUsername">Username</label>
+      <input id="profileUsername" type="text"
+             minlength="3" maxlength="20"
+             pattern="[A-Za-z0-9_]+"
+             autocomplete="username"
+             placeholder="e.g. moonchild" required>
+      <small class="profile-help">3–20 letters, numbers or underscores.</small>
+
+      <label for="profileBio">Bio</label>
+      <textarea id="profileBio" maxlength="160"
+                placeholder="A little about you…"></textarea>
+      <small class="profile-help"><span id="bioCount">0</span>/160 characters</small>
+
+      <p id="profileMessage" role="status" aria-live="polite"></p>
+      <button class="primary" id="saveProfile" type="submit">
+        Save my profile ✦
+      </button>
+    </form>
+  </div>
+
+  <div class="my-posts">
+    <div class="eyebrow">YOUR THOUGHTS</div>
+    <h2>Your posts</h2>
+    <div id="myPosts" class="grid"></div>
+    <p id="myPostsEmpty" class="empty">
+      Your thoughts will appear here after you sign in and publish them.
+    </p>
+  </div>
+</section>
 <section class="about" id="about"><b>✦</b><p>For the overthinkers, the daydreamers,<br>and everyone awake with one more question.</p><small>YOU BELONG IN THE CONVERSATION.</small></section></main><footer><a class="brand" href="#"><b>✦</b><span>overthinkers<span class="accent">.</span><small>PARADISE</small></span></a><span>Made of stardust and too many thoughts.</span><span>© <span id="year"></span> Overthinkers Paradise</span></footer>
 <dialog id="modal"><button class="x" id="close" aria-label="Close">×</button><b>✦</b><div class="eyebrow">WELCOME, STARGAZER</div><h2>Your orbit awaits.</h2><p>Real accounts are coming in a future update. For now, explore the demo and try posting a thought.</p><button class="primary" id="ok">Got it</button></dialog><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
