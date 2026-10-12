@@ -80,7 +80,7 @@ function formatTime(dateString) {
 async function loadPosts() {
   const { data, error } = await db
     .from("questions")
-    .select("id, title, body, category, created_at")
+    .select("id, title, body, category, user_id, created_at")
     .order("created_at", { ascending: false })
     .limit(100);
 
