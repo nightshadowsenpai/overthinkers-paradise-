@@ -141,3 +141,19 @@
     height: 76px;
   }
 }
+
+/* Profile pictures in community posts */
+.post-avatar {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(185, 165, 255, 0.65);
+  background: #17152d;
+}
+
+.post-author {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
